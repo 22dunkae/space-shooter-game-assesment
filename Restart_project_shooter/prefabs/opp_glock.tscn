@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://rs1381uxoed6"]
+
+[ext_resource type="Script" path="res://opp_glock.gd" id="1_m6fhx"]
+[ext_resource type="Texture2D" uid="uid://cdimxl5vd3e3s" path="res://textures/kenney_space-shooter-redux/PNG/Lasers/laserBlue09.png" id="2_m24vd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwwmc"]
+radius = 14.0357
+
+[node name="opp_glock" type="Area2D"]
+script = ExtResource("1_m6fhx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_m24vd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_cwwmc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

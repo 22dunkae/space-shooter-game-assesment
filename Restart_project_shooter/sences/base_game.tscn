@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://b52kc5fki0xox"]
+
+[ext_resource type="PackedScene" uid="uid://bhog3oymwy5r0" path="res://prefabs/player.tscn" id="1_hss2r"]
+[ext_resource type="Script" path="res://code/base_game.gd" id="1_tor58"]
+[ext_resource type="PackedScene" uid="uid://dyvmv707ag85e" path="res://prefabs/Main_Menu.tscn" id="2_5hdl1"]
+[ext_resource type="PackedScene" uid="uid://1do7epcpxvo" path="res://sences/node_2d.tscn" id="2_qkiww"]
+[ext_resource type="PackedScene" uid="uid://di0osd4h27jrq" path="res://prefabs/life.tscn" id="2_yg4pp"]
+[ext_resource type="Theme" uid="uid://cxwar7yiio02f" path="res://new_theme.tres" id="3_edtvv"]
+[ext_resource type="PackedScene" uid="uid://b42fbhw4or4vo" path="res://prefabs/opp.tscn" id="4_gs2kq"]
+[ext_resource type="FontFile" uid="uid://dbfeek2jnoxaa" path="res://textures/kenney_space-shooter-redux/Bonus/kenvector_future.ttf" id="5_3damm"]
+
+[sub_resource type="Theme" id="Theme_2pl0h"]
+default_font = ExtResource("5_3damm")
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_tor58")
+
+[node name="Node2D" parent="." instance=ExtResource("2_qkiww")]
+
+[node name="MAINMENU" parent="." instance=ExtResource("2_5hdl1")]
+visible = false
+offset_left = 567.0
+offset_top = 324.0
+offset_right = 567.0
+offset_bottom = 324.0
+
+[node name="Area2D" parent="." instance=ExtResource("2_yg4pp")]
+position = Vector2(1, -1)
+
+[node name="player" parent="." instance=ExtResource("1_hss2r")]
+position = Vector2(155, 295)
+
+[node name="opp_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="game_ui" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_edtvv")
+
+[node name="Label" type="Label" parent="game_ui"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_right = 77.0
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "Score: 0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="game_ui"]
+layout_mode = 1
+offset_left = 100.0
+offset_right = 373.0
+offset_bottom = 36.0
+theme = SubResource("Theme_2pl0h")
+text = "LIVES: 0000"
+
+[node name="opp" parent="." instance=ExtResource("4_gs2kq")]
+position = Vector2(833, 489)
+
+[node name="resart_game" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="highscore" from="." to="Node2D" method="_on_game_highscore"]
+[connection signal="highscore" from="." to="MAINMENU" method="_on_game_highscore"]
+[connection signal="START" from="MAINMENU" to="." method="_on_mainmenu_start"]
+[connection signal="life_1" from="Area2D" to="." method="_on_area_2d_life_1"]
+[connection signal="life_2" from="Area2D" to="." method="_on_area_2d_life_2"]
+[connection signal="life_end" from="Area2D" to="." method="_on_area_2d_life_end"]
+[connection signal="life_end" from="Area2D" to="player" method="_on_area_2d_life_end"]
+[connection signal="player_killed" from="player" to="." method="_on_player_player_killed"]
+[connection signal="player_live_lost" from="player" to="Area2D" method="_on_player_player_live_lost"]
+[connection signal="timeout" from="opp_timer" to="." method="_on_opp_timer_timeout"]
+[connection signal="timeout" from="resart_game" to="." method="_on_resart_game_timeout"]
+[connection signal="timeout" from="resart_game" to="Node2D" method="_on_resart_game_timeout"]
+[connection signal="timeout" from="resart_game" to="MAINMENU" method="_on_resart_game_timeout"]
