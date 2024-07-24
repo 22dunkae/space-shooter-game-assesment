@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b52kc5fki0xox"]
+[gd_scene load_steps=11 format=3 uid="uid://b52kc5fki0xox"]
 
 [ext_resource type="PackedScene" uid="uid://bhog3oymwy5r0" path="res://prefabs/player.tscn" id="1_hss2r"]
 [ext_resource type="Script" path="res://code/base_game.gd" id="1_tor58"]
@@ -11,6 +11,10 @@
 
 [sub_resource type="Theme" id="Theme_2pl0h"]
 default_font = ExtResource("5_3damm")
+
+[sub_resource type="Theme" id="Theme_vqa7n"]
+default_font = ExtResource("5_3damm")
+default_font_size = 24
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_tor58")
@@ -67,6 +71,26 @@ position = Vector2(833, 489)
 
 [node name="resart_game" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="goal" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="goal"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 794.0
+offset_right = 1133.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme = SubResource("Theme_vqa7n")
+text = "Score goal: 25"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="highscore" from="." to="Node2D" method="_on_game_highscore"]
 [connection signal="highscore" from="." to="MAINMENU" method="_on_game_highscore"]

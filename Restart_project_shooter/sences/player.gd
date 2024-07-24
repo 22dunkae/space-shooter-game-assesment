@@ -4,7 +4,7 @@ extends Area2D
 signal player_killed
 var counter = 0
 signal player_live_lost
-
+var power_up_q_avaliable = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,15 +20,32 @@ func _process(delta):
 		position.x+=10
 	if Input.is_action_pressed("player_b") and position.x >50:
 		position.x -=10	
-	
-	if Input.is_action_just_pressed("power_up_q"):
+	if power_up_q_avaliable == true:
 		counter = 0
-		while counter != 30:
-			var laser = laser_perfab.instantiate()
-			laser.position = position
-			get_parent().add_child(laser)
-			$AudioStreamPlayer.play()
-			counter = counter + 1
+		if Input.is_action_just_pressed("power_up_q"):
+			if counter == 4:
+				power_up_q_avaliable = false
+			if counter == 2:
+				var laser = laser_perfab.instantiate()
+				laser.position.y = -5
+				laser.position.x = position
+				get_parent().add_child(laser)
+				$AudioStreamPlayer.play()
+			if counter == 2:
+				var laser = laser_perfab.instantiate()
+				laser.position.y = +5
+				laser.position.x = position
+				get_parent().add_child(laser)
+				$AudioStreamPlayer.play()
+			while counter != 4:
+				var laser = laser_perfab.instantiate()
+				laser.position = position
+				get_parent().add_child(laser)
+				$AudioStreamPlayer.play()
+				counter = counter + 1
+				
+		
+	
 		
 		
 	#laser shooting

@@ -4,6 +4,7 @@ var score=0
 var lives=3
 signal highscore
 var counter = 0
+var tutorial = false
 @onready var opp_prefab= preload("res://prefabs/opp.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +15,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if tutorial == true:
+		get_tree().change_scene_to_file("res://sences/tutorial_completedl.tscn")
+	if score >= 25:
+		tutorial = true
+		
 
 
 func _on_opp_timer_timeout():
@@ -48,7 +53,7 @@ func _on_player_player_killed():
 		print("counter: "+ str(counter))
 	$resart_game.start()
 	
-	
+
 	
 
 
