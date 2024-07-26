@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpdxerthhhmkh"]
+
+[ext_resource type="Script" path="res://code/Button.gd" id="1_2sftg"]
+
+[node name="exit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 192.0
+offset_bottom = 64.0
+text = "QUIT"
+script = ExtResource("1_2sftg")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

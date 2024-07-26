@@ -1,4 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://4ckthickq27y"]
+[gd_scene load_steps=5 format=3 uid="uid://4ckthickq27y"]
+
+[ext_resource type="PackedScene" uid="uid://cpdxerthhhmkh" path="res://prefabs/exit_button.tscn" id="1_a5vd1"]
+[ext_resource type="FontFile" uid="uid://dou30qw5tqxft" path="res://textures/kenney_space-shooter-redux/Bonus/kenvector_future_thin.ttf" id="2_ebso1"]
+
+[sub_resource type="Theme" id="Theme_yig7r"]
+default_font = ExtResource("2_ebso1")
+default_font_size = 21
 
 [sub_resource type="Theme" id="Theme_17rva"]
 default_font_size = 50
@@ -11,12 +18,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Exit" parent="." instance=ExtResource("1_a5vd1")]
+layout_mode = 1
+offset_left = 480.0
+offset_top = 576.0
+offset_right = -480.0
+offset_bottom = -8.0
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -336.0
+offset_top = 176.0
+offset_right = 328.0
+offset_bottom = 245.0
+grow_horizontal = 2
+theme = SubResource("Theme_yig7r")
+text = "This was the first tutoral completed, you have seven to go
+
+Congratulations"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 264.0
-offset_top = 24.0
-offset_right = 824.0
-offset_bottom = 96.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 136.0
+grow_horizontal = 2
 theme = SubResource("Theme_17rva")
-text = "Tutorial COMPLETED!!!"
+text = "Tutorial 1 COMPLETED!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 320.0
+offset_right = 672.0
+offset_bottom = 384.0
+text = "Start Tutorial 2 "
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -368.0
+offset_top = 536.0
+offset_right = 361.0
+offset_bottom = 564.0
+grow_horizontal = 2
+theme = SubResource("Theme_yig7r")
+text = "Fyi if you quit now you reset progress"
 horizontal_alignment = 1
