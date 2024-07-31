@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk6e8l6sice4h"]
+
+[ext_resource type="Script" path="res://code/Alien.gd" id="1_8d7bd"]
+[ext_resource type="Texture2D" uid="uid://bdiajhnibfkd" path="res://textures/kenney_space-shooter-redux/PNG/Enemies/enemyBlack1.png" id="1_20qe4"]
+[ext_resource type="Script" path="res://prefabs/space_invader_alien_area.gd" id="1_ebn0q"]
+[ext_resource type="Texture2D" uid="uid://cmahvnf154era" path="res://textures/kenney_space-shooter-redux/PNG/Enemies/enemyGreen5.png" id="2_de6g1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yojgg"]
+size = Vector2(96, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q0x8"]
+size = Vector2(96, 112)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_ebn0q")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_8d7bd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(32, -32)
+scale = Vector2(0.348024, 0.690476)
+texture = ExtResource("1_20qe4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-32, -32)
+scale = Vector2(0.348024, 0.690476)
+texture = ExtResource("1_20qe4")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(3.8147e-06, -1.90735e-06)
+texture = ExtResource("2_de6g1")
+
+[node name="Sprite2D5" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+rotation = -3.14159
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_de6g1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+position = Vector2(-24.25, 21)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_de6g1")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D/Sprite2D"]
+position = Vector2(24.25, 21)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_de6g1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_yojgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_2q0x8")
+
+[connection signal="area_entered" from="." to="CharacterBody2D" method="_on_area_2d_area_entered"]
