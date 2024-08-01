@@ -1,6 +1,5 @@
 extends Area2D
-class_name spaceinvaderalienarea
-
+class_name alienlaser3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,8 +8,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	position.y +=2
 
 
-func _on_character_body_2d_timerreset():
-	$Timer.start() # Replace with function body.
+func _on_area_entered(area):
+	if area is alienplayer:
+		queue_free()# Replace with function body.
+
+
+func _on_timer_timeout():
+	queue_free()

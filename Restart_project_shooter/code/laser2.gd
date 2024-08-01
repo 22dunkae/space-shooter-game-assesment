@@ -18,6 +18,7 @@ func _process(delta):
 
 
 func _on_area_entered(area):
+	queue_free()
 	if area is spaceinvaderalien or area is spaceinvaderalienarea:
 		queue_free()
 		print("laser")# Replace with function body.

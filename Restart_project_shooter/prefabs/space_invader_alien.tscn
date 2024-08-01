@@ -50,8 +50,14 @@ texture = ExtResource("2_de6g1")
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_yojgg")
 
+[node name="Timer" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.3
+autostart = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_2q0x8")
 
 [connection signal="area_entered" from="." to="CharacterBody2D" method="_on_area_2d_area_entered"]
+[connection signal="timerreset" from="CharacterBody2D" to="." method="_on_character_body_2d_timerreset"]
+[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
