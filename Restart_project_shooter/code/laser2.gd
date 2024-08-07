@@ -6,7 +6,7 @@ class_name spaceinvaderlaser
 
 func _ready():
 	pass # Replace with function body.
-
+	
 
 # Called every frame. 'delta' is sthe elapsed time since the previous frame.
 func _process(delta):
@@ -26,3 +26,8 @@ func _on_area_entered(area):
 
 func _on_timer_timeout():
 	queue_free() # Replace with function body.
+
+
+func _on_body_entered(body):
+	if body is spaceinvaderalien or body is spaceinvaderalienarea:
+		queue_free() # Replace with function body.

@@ -8,11 +8,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.y +=2
+	position.y +=4
 
 
 func _on_area_entered(area):
-	if area is alienplayer:
+	
+	if area is alienplayer or area is spaceinvaderlaser:
 		queue_free()# Replace with function body.
 
 

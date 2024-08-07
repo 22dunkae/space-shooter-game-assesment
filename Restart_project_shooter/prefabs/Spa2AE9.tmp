@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://djbwav3h48q52"]
+
+[ext_resource type="Texture2D" uid="uid://c32jxgmkngd1j" path="res://textures/kenney_space-shooter-redux/Backgrounds/darkPurple.png" id="1_5xo5r"]
+[ext_resource type="PackedScene" uid="uid://gtsb7y2q1ku7" path="res://prefabs/spaceinvaderplayer.tscn" id="1_7jg5w"]
+[ext_resource type="Script" path="res://prefabs/Space invaders.gd" id="1_x4ww2"]
+[ext_resource type="PackedScene" uid="uid://dk6e8l6sice4h" path="res://prefabs/space_invader_alien.tscn" id="3_51ol5"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_x4ww2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(560, 648)
+scale = Vector2(4.875, 0.0625002)
+texture = ExtResource("1_5xo5r")
+
+[node name="spaceinvaderplayer" parent="." instance=ExtResource("1_7jg5w")]
+position = Vector2(64, 632)
+
+[node name="Area2D" parent="." instance=ExtResource("3_51ol5")]
+position = Vector2(64, 72)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -8,15 +8,17 @@ var shootingcount = randf_range(0,50)
 var move_speed = 10
 var timerwait = false
 var counter = 0
-
+signal enemy_dead
 func _physics_process(delta):
+	
 	while counter == 0: 
-		shootingcount = randf_range(0.3,1)
+		shootingcount = randf_range(4,8)
 		$Timer.start(shootingcount)
 		counter+=1
 	
 func kill():
-	
+	enemy_dead.emit()
+	emit_signal("enemy_dead")
 	queue_free()
 
 @onready var explosion_prefab= preload("res://prefabs/explosion.tscn")
@@ -37,3 +39,7 @@ func _on_timer_timeout():
 	firedbullet.position = position
 	get_parent().add_child(firedbullet)
 	
+
+
+func _on_timer_2_timeout():
+	position.y += 58 # Replace with function body.
