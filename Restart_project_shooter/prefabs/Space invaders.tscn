@@ -43,4 +43,5 @@ position = Vector2(64, 632)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
 
+[connection signal="player_live_lost" from="spaceinvaderplayer" to="." method="_on_spaceinvaderplayer_player_live_lost"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

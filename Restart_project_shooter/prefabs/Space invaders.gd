@@ -41,3 +41,7 @@ func on_enemy_dead():
 	score += 1
 	$Label.text="Score: " + str(score/2)
 
+
+
+func _on_spaceinvaderplayer_player_live_lost():
+	get_tree().change_scene_to_file("res://prefabs/Main_Menu_space_invaders.tscn")
