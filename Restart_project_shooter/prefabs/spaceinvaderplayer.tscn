@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://gtsb7y2q1ku7"]
+[gd_scene load_steps=8 format=3 uid="uid://gtsb7y2q1ku7"]
 
 [ext_resource type="Script" path="res://prefabs/ship.gd" id="1_ki83j"]
 [ext_resource type="Texture2D" uid="uid://bdiajhnibfkd" path="res://textures/kenney_space-shooter-redux/PNG/Enemies/enemyBlack1.png" id="3_gab2i"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjr86"]
 size = Vector2(128, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phsds"]
+size = Vector2(128, 72)
 
 [node name="spaceinvaderplayer" type="Node2D"]
 
@@ -44,3 +47,11 @@ texture = ExtResource("4_ksjiu")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ship"]
 stream = ExtResource("5_g0isi")
 volume_db = 1.0
+
+[node name="Area2D" type="Area2D" parent="ship"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ship/Area2D"]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_phsds")
+
+[connection signal="area_entered" from="ship/Area2D" to="ship" method="_on_area_2d_area_entered"]

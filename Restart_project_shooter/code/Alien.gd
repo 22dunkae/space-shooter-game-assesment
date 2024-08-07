@@ -43,3 +43,7 @@ func _on_timer_timeout():
 
 func _on_timer_2_timeout():
 	position.y += 58 # Replace with function body.
+
+
+func _on_enemy_dead():
+	pass # Replace with function body.
