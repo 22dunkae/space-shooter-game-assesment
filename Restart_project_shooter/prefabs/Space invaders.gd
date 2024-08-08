@@ -1,9 +1,12 @@
 extends Node2D
+class_name SpaceInvadersScene
 var counter = 0
 var x = 80
 var counter2 = 0
 var spawncount = 0
 var score = 0
+signal player_down
+
 @onready var Alienenemy= preload("res://prefabs/space_invader_alien.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -31,9 +34,10 @@ func _on_timer_timeout():
 		var spaceinvaderalien = Alienenemy.instantiate()
 		spaceinvaderalien.position = Vector2(x,80)
 		spaceinvaderalien.enemy_dead.connect(on_enemy_dead)
+		
 		get_parent().add_child(spaceinvaderalien)
 		counter = counter +1
-		x= x+120
+		x= x+125
 		counter2 =0
 		
 
@@ -44,4 +48,11 @@ func on_enemy_dead():
 
 
 func _on_spaceinvaderplayer_player_live_lost():
-	get_tree().change_scene_to_file("res://prefabs/Main_Menu_space_invaders.tscn")
+	player_down.emit()
+	var sic = get_tree().get_root().get_node("Node2D")
+	sic.queue_free()
+	
+	print("change da funky scene bro")
+
+	
+	

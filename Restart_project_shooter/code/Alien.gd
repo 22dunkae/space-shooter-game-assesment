@@ -9,13 +9,17 @@ var move_speed = 10
 var timerwait = false
 var counter = 0
 signal enemy_dead
+func _ready():
+	SpaceInvadersScene.player_down.connect(on_player_down)
+func on_player_down():
+	queue_free()
 func _physics_process(delta):
 	
 	while counter == 0: 
 		shootingcount = randf_range(4,8)
 		$Timer.start(shootingcount)
 		counter+=1
-	
+
 func kill():
 	enemy_dead.emit()
 	emit_signal("enemy_dead")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ddpewit820v1c"]
 
-[ext_resource type="Script" path="res://prefabs/Main_Menu.gd" id="1_atkb5"]
+[ext_resource type="Script" path="res://prefabs/Main_Menu_space_invaders.gd" id="1_sucbw"]
 [ext_resource type="PackedScene" uid="uid://1do7epcpxvo" path="res://sences/node_2d.tscn" id="2_oatdx"]
 [ext_resource type="Theme" uid="uid://cxwar7yiio02f" path="res://new_theme.tres" id="3_4wr40"]
 [ext_resource type="FontFile" uid="uid://dbfeek2jnoxaa" path="res://textures/kenney_space-shooter-redux/Bonus/kenvector_future.ttf" id="4_pbsec"]
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_atkb5")
+script = ExtResource("1_sucbw")
 
 [node name="Node2D" parent="." instance=ExtResource("2_oatdx")]
 
@@ -85,5 +85,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="highscore" from="Node2D" to="." method="_on_node_2d_highscore"]
-[connection signal="pressed" from="Button" to="." method="_on_START_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_EXIT_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_EXIT_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_START_pressed"]

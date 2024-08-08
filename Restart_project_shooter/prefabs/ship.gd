@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 class_name alienplayer
 @onready var laser_perfab =preload("res://prefabs/laser2.tscn")
 const SPEED = 40.0
@@ -16,16 +16,17 @@ func _physics_process(delta):
 	
 	
 	
-	if Input.is_action_pressed("player_f") and position.x <1020:
+	if Input.is_action_pressed("player_f") and position.x <1120:
 		position.x+=10
-	if Input.is_action_pressed("player_b") and position.x >0:
+	if Input.is_action_pressed("player_b") and position.x >48:
 		position.x -=10	
 	if Input.is_action_just_pressed("player_shoot"):	
 		#make a laser
 		var laser = laser_perfab.instantiate()
-		laser.position = Vector2(position.x,-20)
+		laser.position = position
 		get_parent().add_child(laser)
 		$AudioStreamPlayer.play()
+		
 		
 
 
