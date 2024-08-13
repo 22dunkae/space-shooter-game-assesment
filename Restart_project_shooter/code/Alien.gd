@@ -10,11 +10,12 @@ var timerwait = false
 var counter = 0
 signal enemy_dead
 func _ready():
-	SpaceInvadersScene.player_down.connect(on_player_down)
+	
+	pass
 func on_player_down():
 	queue_free()
 func _physics_process(delta):
-	
+	position.y += 0.2
 	while counter == 0: 
 		shootingcount = randf_range(4,8)
 		$Timer.start(shootingcount)
@@ -44,9 +45,8 @@ func _on_timer_timeout():
 	get_parent().add_child(firedbullet)
 	
 
-
-func _on_timer_2_timeout():
-	position.y += 58 # Replace with function body.
+func on_start():
+	queue_free()
 
 
 func _on_enemy_dead():

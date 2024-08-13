@@ -6,18 +6,12 @@ var counter2 = 0
 var spawncount = 0
 var score = 0
 signal player_down
-
+signal start
 @onready var Alienenemy= preload("res://prefabs/space_invader_alien.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
-	
-
-
-
-
+	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if counter >= 8:
@@ -48,9 +42,11 @@ func on_enemy_dead():
 
 
 func _on_spaceinvaderplayer_player_live_lost():
+	
+	get_tree().change_scene_to_file("res://prefabs/Main_Menu_space.tscn")
 	player_down.emit()
-	var sic = get_tree().get_root().get_node("Node2D")
-	sic.queue_free()
+	
+	
 	
 	print("change da funky scene bro")
 
