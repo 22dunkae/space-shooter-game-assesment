@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://p6gfe6df37tx"]
 
 [ext_resource type="Script" path="res://code/laser3alien.gd" id="1_gfufy"]
-[ext_resource type="Texture2D" uid="uid://lsbcnkr2pfqe" path="res://textures/kenney_space-shooter-redux/PNG/Lasers/laserRed01.png" id="2_hgkef"]
+[ext_resource type="Texture2D" uid="uid://dgymxr22jnvyi" path="res://textures/kenney_space-shooter-extension/PNG/Sprites/Missiles/spaceMissiles_035.png" id="2_as7ar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ckkf"]
 size = Vector2(11, 54)
@@ -11,10 +11,12 @@ position = Vector2(301, 233)
 script = ExtResource("1_gfufy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_hgkef")
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("2_as7ar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
+scale = Vector2(1.22981, 0.56)
 shape = SubResource("RectangleShape2D_8ckkf")
 
 [node name="Timer" type="Timer" parent="."]

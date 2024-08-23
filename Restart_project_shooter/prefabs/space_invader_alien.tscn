@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk6e8l6sice4h"]
+[gd_scene load_steps=4 format=3 uid="uid://dk6e8l6sice4h"]
 
 [ext_resource type="Script" path="res://code/Alien.gd" id="1_8d7bd"]
-[ext_resource type="Texture2D" uid="uid://bdiajhnibfkd" path="res://textures/kenney_space-shooter-redux/PNG/Enemies/enemyBlack1.png" id="1_20qe4"]
-[ext_resource type="Texture2D" uid="uid://cmahvnf154era" path="res://textures/kenney_space-shooter-redux/PNG/Enemies/enemyGreen5.png" id="2_de6g1"]
+[ext_resource type="Texture2D" uid="uid://b7x1bdlsppwo0" path="res://textures/kenney_space-shooter-extension/PNG/Sprites X2/Rocket parts/images-1.png.png" id="2_u34id"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0msq8"]
 size = Vector2(96, 112)
@@ -14,36 +13,14 @@ script = ExtResource("1_8d7bd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -8)
+scale = Vector2(1.04, 0.793747)
 shape = SubResource("RectangleShape2D_0msq8")
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-position = Vector2(32, -32)
-scale = Vector2(0.348024, 0.690476)
-texture = ExtResource("1_20qe4")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-32, -32)
-scale = Vector2(0.348024, 0.690476)
-texture = ExtResource("1_20qe4")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D5" type="Sprite2D" parent="Area2D"]
 position = Vector2(3.8147e-06, -1.90735e-06)
-texture = ExtResource("2_de6g1")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Sprite2D"]
 rotation = -3.14159
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_de6g1")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-24.25, 21)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_de6g1")
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(24.25, 21)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_de6g1")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_u34id")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -51,6 +28,7 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
+scale = Vector2(1.04, 0.800001)
 shape = SubResource("RectangleShape2D_0msq8")
 
 [connection signal="enemy_dead" from="." to="." method="_on_enemy_dead"]

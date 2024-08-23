@@ -5,7 +5,7 @@ signal START
 
 
 func _on_button_2_pressed():
-	get_tree().change_scene_to_file("res://sences/node_2d.tscn")
+	get_tree().change_scene_to_file("res://sences/base_game.tscn")
 	START.emit()
 
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddpewit820v1c"]
+[gd_scene load_steps=8 format=3 uid="uid://ddpewit820v1c"]
 
 [ext_resource type="Script" path="res://prefabs/Main_Menu_space_invaders.gd" id="1_sucbw"]
+[ext_resource type="Texture2D" uid="uid://cjmjp84qbtt6u" path="res://textures/kenney_space-shooter-redux/Backgrounds/black.png" id="2_45lgw"]
 [ext_resource type="PackedScene" uid="uid://1do7epcpxvo" path="res://sences/node_2d.tscn" id="2_oatdx"]
 [ext_resource type="Theme" uid="uid://cxwar7yiio02f" path="res://new_theme.tres" id="3_4wr40"]
 [ext_resource type="FontFile" uid="uid://dbfeek2jnoxaa" path="res://textures/kenney_space-shooter-redux/Bonus/kenvector_future.ttf" id="4_pbsec"]
@@ -21,6 +22,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sucbw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(576, 316)
+scale = Vector2(5.375, 3.40625)
+texture = ExtResource("2_45lgw")
 
 [node name="Node2D" parent="." instance=ExtResource("2_oatdx")]
 

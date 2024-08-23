@@ -8,5 +8,5 @@ func _on_EXIT_pressed():
 	#exits
 
 func _on_START_pressed():
-	get_tree().change_scene_to_file("res://sences/node_2d.tscn")
+	get_tree().change_scene_to_file("res://prefabs/Space invaders.tscn")
 	START.emit() 

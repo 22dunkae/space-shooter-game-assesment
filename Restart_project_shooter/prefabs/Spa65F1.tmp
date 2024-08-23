@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://djbwav3h48q52"]
+
+[ext_resource type="Texture2D" uid="uid://c32jxgmkngd1j" path="res://textures/kenney_space-shooter-redux/Backgrounds/darkPurple.png" id="1_5xo5r"]
+[ext_resource type="PackedScene" uid="uid://gtsb7y2q1ku7" path="res://prefabs/spaceinvaderplayer.tscn" id="1_7jg5w"]
+[ext_resource type="Script" path="res://prefabs/Space invaders.gd" id="1_x4ww2"]
+[ext_resource type="Texture2D" uid="uid://cjmjp84qbtt6u" path="res://textures/kenney_space-shooter-redux/Backgrounds/black.png" id="2_h5oo7"]
+[ext_resource type="FontFile" uid="uid://dbfeek2jnoxaa" path="res://textures/kenney_space-shooter-redux/Bonus/kenvector_future.ttf" id="2_lt6vg"]
+
+[sub_resource type="Theme" id="Theme_f37o8"]
+default_font = ExtResource("2_lt6vg")
+default_font_size = 46
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_x4ww2")
+
+[node name="Label" type="Label" parent="."]
+top_level = true
+z_index = 2
+offset_left = 320.0
+offset_right = 832.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_f37o8")
+text = "SCORE:0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+top_level = true
+light_mask = 4
+visibility_layer = 7
+z_index = 1
+position = Vector2(576, 32)
+scale = Vector2(4.5, 0.243164)
+texture = ExtResource("2_h5oo7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(560, 648)
+scale = Vector2(4.875, 0.0625002)
+texture = ExtResource("1_5xo5r")
+
+[node name="spaceinvaderplayer" parent="." instance=ExtResource("1_7jg5w")]
+position = Vector2(128, 632)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="player_live_lost" from="spaceinvaderplayer" to="." method="_on_spaceinvaderplayer_player_live_lost"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

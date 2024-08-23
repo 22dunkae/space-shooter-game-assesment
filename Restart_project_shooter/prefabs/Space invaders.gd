@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	if counter >= 8:
 		counter = 0
-		x = 60
+		x = 80
 	while counter2 == 0: 
 		spawncount = randf_range(6,10)
 		$Timer.start(spawncount)
@@ -28,7 +28,7 @@ func _on_timer_timeout():
 		var spaceinvaderalien = Alienenemy.instantiate()
 		spaceinvaderalien.position = Vector2(x,80)
 		spaceinvaderalien.enemy_dead.connect(on_enemy_dead)
-		
+	
 		get_parent().add_child(spaceinvaderalien)
 		counter = counter +1
 		x= x+125
@@ -38,12 +38,15 @@ func _on_timer_timeout():
 func on_enemy_dead():
 	score += 1
 	$Label.text="Score: " + str(score/2)
-
-
+	
 
 func _on_spaceinvaderplayer_player_live_lost():
 	
-	get_tree().change_scene_to_file("res://prefabs/Main_Menu_space.tscn")
+	
+	queue_free()
+	
+	
+	get_tree().change_scene_to_file("res://prefabs/Main_Menu_space_invaders.tscn")
 	player_down.emit()
 	
 	

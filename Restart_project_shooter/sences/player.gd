@@ -12,14 +12,14 @@ func _process(delta):
 	
 	#player movement
 	if Input.is_action_pressed("player_down") and position.y <600:
-		position.y += 10
+		position.y += 8
 	if Input.is_action_pressed("player_up") and  position.y >50:
-		position.y -=10
+		position.y -=8
 	
 	if Input.is_action_pressed("player_f") and position.x <1125:
-		position.x+=10
+		position.x+=8
 	if Input.is_action_pressed("player_b") and position.x >50:
-		position.x -=10	
+		position.x -=8	
 	if power_up_q_avaliable == true:
 		counter = 0
 		if Input.is_action_just_pressed("power_up_q"):

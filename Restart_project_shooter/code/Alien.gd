@@ -8,6 +8,7 @@ var shootingcount = randf_range(0,50)
 var move_speed = 10
 var timerwait = false
 var counter = 0
+const gameover = 1
 signal enemy_dead
 func _ready():
 	
@@ -15,6 +16,7 @@ func _ready():
 func on_player_down():
 	queue_free()
 func _physics_process(delta):
+	
 	position.y += 0.2
 	while counter == 0: 
 		shootingcount = randf_range(4,8)
