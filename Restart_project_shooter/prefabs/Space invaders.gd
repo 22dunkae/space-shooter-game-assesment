@@ -11,9 +11,13 @@ signal start
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	score =0
+	$Label.text="Score: " + str(score/2)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if score == 25:
+		get_tree().change_scene_to_file("res://prefabs/Main_Menu.tscn")
 	if counter >= 8:
 		counter = 0
 		x = 80
@@ -30,6 +34,7 @@ func _on_timer_timeout():
 		spaceinvaderalien.enemy_dead.connect(on_enemy_dead)
 	
 		get_parent().add_child(spaceinvaderalien)
+		
 		counter = counter +1
 		x= x+125
 		counter2 =0
@@ -43,15 +48,14 @@ func on_enemy_dead():
 func _on_spaceinvaderplayer_player_live_lost():
 	
 	
+	Alienenemy.emit_signal("start")
 	queue_free()
-	
-	
-	get_tree().change_scene_to_file("res://prefabs/Main_Menu_space_invaders.tscn")
 	player_down.emit()
-	
-	
-	
+	get_tree().change_scene_to_file("res://prefabs/Main_Menu_space_invaders.tscn")
+	start.emit()
 	print("change da funky scene bro")
 
-	
-	
+func _on_control_start():
+	score = 0
+	get_tree().unload_current_scene()
+	get_tree().change_scene_to_file("res://prefabs/Space invaders.tscn") # Replace with function body.

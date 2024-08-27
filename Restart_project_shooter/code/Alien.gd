@@ -36,7 +36,8 @@ func _on_area_2d_area_entered(area):
 		get_parent().add_child(death)
 		kill() # Replace with function body.
 
-
+	if area is killswitch:
+		kill()
 func _on_timer_timeout():
 	shootingcount = 0
 	counter = 0
@@ -47,9 +48,11 @@ func _on_timer_timeout():
 	get_parent().add_child(firedbullet)
 	
 
-func on_start():
-	queue_free()
 
 
 func _on_enemy_dead():
 	pass # Replace with function body.
+
+
+func _on_node_2d_start():
+	queue_free() # Replace with function body.

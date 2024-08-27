@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://djbwav3h48q52"]
+[gd_scene load_steps=9 format=3 uid="uid://djbwav3h48q52"]
 
 [ext_resource type="Texture2D" uid="uid://c32jxgmkngd1j" path="res://textures/kenney_space-shooter-redux/Backgrounds/darkPurple.png" id="1_5xo5r"]
 [ext_resource type="PackedScene" uid="uid://gtsb7y2q1ku7" path="res://prefabs/spaceinvaderplayer.tscn" id="1_7jg5w"]
 [ext_resource type="Script" path="res://prefabs/Space invaders.gd" id="1_x4ww2"]
+[ext_resource type="PackedScene" uid="uid://dk6e8l6sice4h" path="res://prefabs/space_invader_alien.tscn" id="2_34bg6"]
+[ext_resource type="PackedScene" uid="uid://ddpewit820v1c" path="res://prefabs/Main_Menu_space_invaders.tscn" id="2_bmho1"]
 [ext_resource type="Texture2D" uid="uid://cjmjp84qbtt6u" path="res://textures/kenney_space-shooter-redux/Backgrounds/black.png" id="2_h5oo7"]
 [ext_resource type="FontFile" uid="uid://dbfeek2jnoxaa" path="res://textures/kenney_space-shooter-redux/Bonus/kenvector_future.ttf" id="2_lt6vg"]
 
@@ -12,6 +14,12 @@ default_font_size = 46
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_x4ww2")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_34bg6")]
+visible = false
+
+[node name="Control" parent="." instance=ExtResource("2_bmho1")]
+visible = false
 
 [node name="Label" type="Label" parent="."]
 top_level = true
@@ -46,5 +54,7 @@ position = Vector2(128, 632)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
 
+[connection signal="start" from="." to="CharacterBody2D" method="_on_node_2d_start"]
+[connection signal="START" from="Control" to="." method="_on_control_start"]
 [connection signal="player_live_lost" from="spaceinvaderplayer" to="." method="_on_spaceinvaderplayer_player_live_lost"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

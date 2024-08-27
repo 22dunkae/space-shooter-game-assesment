@@ -3,7 +3,8 @@ class_name alienplayer
 @onready var laser_perfab =preload("res://prefabs/laser2.tscn")
 const SPEED = 40.0
 const JUMP_VELOCITY = -400.0
-@onready var explosion_prefab= preload("res://prefabs/explosion.tscn")
+@onready var explosion_prefab = preload("res://prefabs/explosion.tscn")
+@onready var killswitchprefab = preload("res://prefabs/spaceinvaders_kill_scene.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 signal player_live_lost
 
@@ -32,7 +33,14 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area is alienlaser3:
+		var killenemy = killswitchprefab.instantiate()
+		killenemy.position = position
+		get_parent().add_child(killenemy)
+		
+		print("added")
 		var death = explosion_prefab.instantiate()
 		death.position = position
 		get_parent().add_child(death)
+		queue_free()
 		player_live_lost.emit()	 # Replace with function body.
+		
