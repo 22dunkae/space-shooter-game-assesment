@@ -47,14 +47,14 @@ func on_enemy_dead():
 
 func _on_spaceinvaderplayer_player_live_lost():
 	
-	
 	Alienenemy.emit_signal("start")
 	queue_free()
 	player_down.emit()
 	get_tree().change_scene_to_file("res://prefabs/Main_Menu_space_invaders.tscn")
 	start.emit()
 	print("change da funky scene bro")
-
+	
+	
 func _on_control_start():
 	score = 0
 	get_tree().unload_current_scene()

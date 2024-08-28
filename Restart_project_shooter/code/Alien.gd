@@ -11,12 +11,10 @@ var counter = 0
 const gameover = 1
 signal enemy_dead
 func _ready():
-	
 	pass
 func on_player_down():
 	queue_free()
 func _physics_process(delta):
-	
 	position.y += 0.2
 	while counter == 0: 
 		shootingcount = randf_range(4,8)
@@ -30,14 +28,12 @@ func kill():
 
 @onready var explosion_prefab= preload("res://prefabs/explosion.tscn")
 func _on_area_2d_area_entered(area):
-	if area is spaceinvaderlaser:
+	if area is spaceinvaderlaser2 or area is spaceinvaderlaserend:
 		var death = explosion_prefab.instantiate()
 		death.position = position
 		get_parent().add_child(death)
 		kill() # Replace with function body.
-
-	if area is killswitch:
-		kill()
+	
 func _on_timer_timeout():
 	shootingcount = 0
 	counter = 0
@@ -55,4 +51,5 @@ func _on_enemy_dead():
 
 
 func _on_node_2d_start():
+	
 	queue_free() # Replace with function body.

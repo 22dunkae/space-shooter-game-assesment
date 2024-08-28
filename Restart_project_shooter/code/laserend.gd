@@ -1,5 +1,5 @@
 extends Area2D
-class_name spaceinvaderlaser2
+class_name spaceinvaderlaserend
 @export var speed=25
 @onready var explosion_prefab= preload("res://prefabs/explosion.tscn")
 # Called when the node enters the scene tree for the first time.

@@ -13,7 +13,7 @@ func _process(delta):
 
 func _on_area_entered(area):
 	
-	if area is alienplayer or area is spaceinvaderlaser:
+	if area is alienplayer or area is spaceinvaderlaser2:
 		queue_free()# Replace with function body.
 
 
