@@ -38,7 +38,7 @@ func _on_area_2d_area_entered(area):
 		var laserended = laserend.instantiate()
 		laserended.position = position
 		get_parent().add_child(laserended)
-		
+		Global.on_dead = true
 		
 		
 		print("added")

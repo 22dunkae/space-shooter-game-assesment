@@ -9,3 +9,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.y += 100
+
+
+func _on_timer_timeout():
+	queue_free() # Replace with function body.

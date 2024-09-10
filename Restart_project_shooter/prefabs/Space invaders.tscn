@@ -16,7 +16,11 @@ default_font_size = 46
 script = ExtResource("1_x4ww2")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_34bg6")]
-visible = false
+position = Vector2(-96, 0)
+
+[node name="restart" type="Timer" parent="CharacterBody2D"]
+wait_time = 0.5
+one_shot = true
 
 [node name="Control" parent="." instance=ExtResource("2_bmho1")]
 visible = false
@@ -55,6 +59,7 @@ position = Vector2(128, 632)
 wait_time = 4.0
 
 [connection signal="start" from="." to="CharacterBody2D" method="_on_node_2d_start"]
+[connection signal="timeout" from="CharacterBody2D/restart" to="CharacterBody2D" method="_on_restart_timeout"]
 [connection signal="START" from="Control" to="." method="_on_control_start"]
 [connection signal="player_live_lost" from="spaceinvaderplayer" to="." method="_on_spaceinvaderplayer_player_live_lost"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
