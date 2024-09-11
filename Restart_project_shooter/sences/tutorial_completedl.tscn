@@ -38,7 +38,7 @@ offset_right = 328.0
 offset_bottom = 245.0
 grow_horizontal = 2
 theme = SubResource("Theme_yig7r")
-text = "This was the first tutoral completed, you have seven to go
+text = "This was the first tutoral completed, you have one to go
 
 Congratulations"
 horizontal_alignment = 1

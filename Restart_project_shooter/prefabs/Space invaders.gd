@@ -12,14 +12,17 @@ signal start
 @onready var killswitchprefab = preload("res://prefabs/spaceinvaders_kill_scene.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.update_ui_menu = false
 	Global.on_dead = false
 	score =0
 	$Label.text="Score: " + str(score/2)
 	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if score == 25:
-		get_tree().change_scene_to_file("res://prefabs/Main_Menu.tscn")
+	if score >= 100:
+		Global.on_dead = true
+		get_tree().change_scene_to_file("res://prefabs/Main_Menu_space_invaders.tscn")
 	if counter >= 8:
 		counter = 0
 		x = 80
@@ -45,9 +48,11 @@ func _on_timer_timeout():
 func on_enemy_dead():
 	score += 1
 	$Label.text="Score: " + str(score/2)
+	Global.high_score_invaders +=1
 	
 
 func _on_spaceinvaderplayer_player_live_lost():
+	Global.update_ui_menu = true
 	var killenemy = killswitchprefab.instantiate()
 	killenemy.position = position
 	get_parent().add_child(killenemy)

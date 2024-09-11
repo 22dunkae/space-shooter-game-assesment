@@ -6,7 +6,7 @@ signal highscore
 var counter = 0
 var tutorial = false
 @onready var opp_prefab= preload("res://prefabs/opp.tscn")
-
+@onready var astroids= preload("res://prefabs/astroids.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_ui()
@@ -80,3 +80,12 @@ func _on_area_2d_life_1():
 func _on_area_2d_life_end():
 	lives = 0
 	update_lives() # Replace with function body.
+
+
+func _on_astroids_timout_timeout():
+	var astroid = astroids.instantiate()
+	var random_y= randi_range(35,597)
+	
+	#set the positoin
+	astroid.position= Vector2(1100,random_y)
+	add_child(astroid) # Replace with function body.

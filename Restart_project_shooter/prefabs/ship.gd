@@ -29,6 +29,7 @@ func _physics_process(delta):
 		laser.position = position
 		get_parent().add_child(laser)
 		$AudioStreamPlayer.play()
+	
 		
 		
 
